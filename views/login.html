@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Heebo">
+    <title>Login</title>
+</head>
+<style>
+    html {
+        padding: 0px;
+        margin: 0px;
+        border: none;
+    }
+    body {
+        width: 100%;
+        height: 100vh;
+        padding: 0;
+        margin: 0;
+        border: none;
+        background-color: #041C32;
+        color: white;
+        font-family: 'Heebo';
+    }
+    .container {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .login-pane {
+        background-color: #064663;
+        color: #ffffff;
+
+        padding: 1em;
+        border-radius: 10px;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+    }
+    .login-pane h1 {
+        margin: 0.5em;
+    }
+    .login-pane label {
+        font-size: smaller;
+    }
+    .login-pane input:not([type=submit]) {
+        margin-top: 0em;
+        margin-bottom: 1em;
+        padding: 0;
+        background-color: #064663;
+        border: none;
+        border-bottom: #04293A solid 2px;
+        font-size: large;
+    }
+    .login-pane input:not([type=submit]):focus {
+        outline: none;
+        border: none;
+        border-bottom: #FF1E56 solid 2px;
+        transition-duration: 0.5s;
+    }
+</style>
+<body>
+    <div class="container">
+        <div class="login-pane">
+            <h1>Login</h1>
+            <form method="POST" action="/o/login">
+                <label for="username">Username</label><br>
+                <input type="text" placeholder="username" name="username"><br>
+                <label for="password">Password</label><br>
+                <input type="password" placeholder="password" name="password"><br>
+                <input type="submit" value="Login">
+            </form>
+        </div>
+    </div>
+</body>
+</html>
