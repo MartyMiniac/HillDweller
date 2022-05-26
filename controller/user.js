@@ -25,7 +25,13 @@ exports.addUser = (data) => {
  */
 exports.delUser = (uid) => {
     return new Promise((resolve, refuse) => {
-
+        userModel.findByIdAndDelete(uid)
+        .then(data => {
+            resolve(data)
+        })
+        .catch(err => {
+            refuse(err)
+        })
     })
 }
 
@@ -35,7 +41,13 @@ exports.delUser = (uid) => {
  */
 exports.getAllUser = () => {
     return new Promise((resolve, refuse) => {
-
+        userModel.find({})
+        .then(data => {
+            resolve(data)
+        })
+        .catch(err => {
+            refuse(err)
+        })
     })
 }
 /**
@@ -44,8 +56,47 @@ exports.getAllUser = () => {
  * @param {updated values for the user} data 
  * @returns 
  */
-exports.updateUser = (uid, data) => {
+exports.updateUser = (data) => {
     return new Promise((resolve, refuse) => {
+        const uid = data.uid
+        delete data.uid
+        userModel.findByIdAndUpdate(uid, data)
+        .then(resdata => {
+            resolve(resdata)
+        })
+        .catch(err => {
+            refuse(err)
+        })
+    })
+}
 
+/**
+ * checks if the login credentials are valid or not
+ * @param {username of the user trying to login} username 
+ * @param {unhashed password of the user trying to login} password 
+ * @returns all the userinfo about the user stored in users table
+ */
+exports.checkLogin = (username, password) => {
+    return new Promise((resolve, refuse) => {
+        userModel.findOne({
+            username: username,
+            password: password
+        })
+        .then(data => {
+            if(data===null) {
+                resolve({
+                    success: false,
+                    data: data
+                })
+            }
+            else {
+                resolve({
+                    success: true,
+                })
+            }
+        })
+        .catch(err => {
+            refuse(err)
+        })
     })
 }
