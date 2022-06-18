@@ -2,6 +2,7 @@ const express = require('express')
 const ui = require('../controller/ui')
 const userCon = require('../controller/user')
 const router = express.Router()
+const auth = require('../controller/auth')
 
 router.get('/login', ui.loginPage)
 
@@ -14,7 +15,8 @@ router.post('/login', (req, res) => {
     userCon.checkLogin(req.body.username, req.body.password)
     .then(data => {
         if(data.success===true) {
-            return res.sendStatus(200)
+            res.cookie('jwt', data.jwt)
+            return res.redirect('/o/dashboard')
         }
         else {
             return res.sendStatus(401)
@@ -25,6 +27,8 @@ router.post('/login', (req, res) => {
         return res.sendStatus(500)
     })
 })
+
+router.get('/dashboard', ui.dashboardPage)
 
 router.post('/addUser', (req, res) => {
     if(req.body.name===undefined || req.body.username===undefined || req.body.password===undefined) {

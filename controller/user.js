@@ -1,5 +1,5 @@
 const userModel = require('../models/user')
-
+const auth = require('./auth')
 /**
  * adds new user data into user table of the database
  * @param {data that needs to be added to the database in users table} data 
@@ -92,6 +92,7 @@ exports.checkLogin = (username, password) => {
             else {
                 resolve({
                     success: true,
+                    jwt: auth.createToken(username)
                 })
             }
         })
