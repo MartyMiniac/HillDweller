@@ -33,10 +33,66 @@
         align-items: center;
         justify-content: center;
     }
+    .taskbar {
+        position: fixed;
+        bottom: 0;
+        height: fit-content;
+        width: fit-content;
+
+        display: flex;
+        align-items: center;
+
+        background-color: rgba(255, 255, 255, 0.2);
+        transition-duration: 0.5s;
+        padding: 0em 0.5em;
+    }
+    .taskbar:hover {
+        background-color: rgba(255, 255, 255, 0.4);
+    }
+    .taskicon {
+        width: 4em;
+        height: 4em;
+        padding: 0em 0.5em;
+        margin: 0.5em 0.25em 0.2em 0.25em;
+        transition-duration: 0.2s;
+        background-repeat: no-repeat;
+        background-position: center;
+        cursor: pointer;
+    }
+    .taskicon:hover {
+        padding: 0em 1em;
+        background-color: #e29e4a;
+        transform: scale(1.25);
+    }
+    .taskiconselected {
+        background-color: rgba(255, 255, 255, 0.6);
+        border-width: 0px;
+        border-bottom-width: 5px;
+        border-style: solid;
+    }
 </style>
 <body>
     <div class="container">
-        
+        <div></div>
+        <div class="taskbar">
+            <div class="taskicon taskiconselected" style="background-image: url('/static/icons/home.svg');" id="taskicon-home"></div>
+            <div class="taskicon" style="background-image: url('/static/icons/shortener.svg');" id="taskicon-shortener"></div>
+            <div class="taskicon" style="background-image: url('/static/icons/forms.svg');" id="taskicon-forms"></div>
+            <div class="taskicon" style="background-image: url('/static/icons/analytics.svg');" id="taskicon-analytics"></div>
+            <div class="taskicon" style="background-image: url('/static/icons/user.svg');" id="taskicon-user"></div>
+            <div class="taskicon" style="background-image: url('/static/icons/admin.svg');" id="taskicon-admin"></div>
+        </div>
     </div>
 </body>
+<script>
+    const taskbarbuttons = document.getElementsByClassName('taskicon')
+    for(let i=0; i<taskbarbuttons.length; i++) {
+        taskbarbuttons[i].onclick = (e) => {
+            for(let j=0; j<taskbarbuttons.length; j++) {
+                taskbarbuttons[j].classList.remove('taskiconselected')
+            }
+            e.composedPath()[0].classList.add('taskiconselected')
+        }
+    }
+</script>
 </html>
