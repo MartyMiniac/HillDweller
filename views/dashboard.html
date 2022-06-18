@@ -26,9 +26,6 @@
         color: white;
         font-family: 'Heebo';
     }
-    .bg-img {
-        height: 100%;
-    }
     .container {
         width: 100%;
         height: 100%;
@@ -36,64 +33,10 @@
         align-items: center;
         justify-content: center;
     }
-    .login-pane {
-        background-color: #064663;
-        color: #ffffff;
-
-        padding: 1em;
-        border-radius: 10px;
-
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        flex-direction: column;
-    }
-    .login-pane h1 {
-        margin: 0.5em;
-    }
-    .login-pane label {
-        font-size: smaller;
-    }
-    .login-pane input:not([type=submit]) {
-        margin-top: 0em;
-        margin-bottom: 1em;
-        padding: 0;
-        background-color: #064663;
-        border: none;
-        color: white;
-        border-bottom: #04293A solid 2px;
-        font-size: large;
-    }
-    .login-pane input:not([type=submit]):focus {
-        outline: none;
-        border: none;
-        border-bottom: #db2e3c solid 2px;
-        transition-duration: 0.5s;
-    }
-    .login-pane input[type="submit"] {
-        width: 100%;
-        height: 2.5em;
-        border-radius: 5px;
-        border-width: 2.5px;
-        background-color: #db2e3c;
-        color: white;
-        font-weight: bolder;
-        font-size: medium;
-        border-color: #db2e3c;
-    }
 </style>
 <body>
     <div class="container">
-        <div class="login-pane">
-            <h1>Login</h1>
-            <form method="POST" action="/o/login">
-                <label for="username">Username</label><br>
-                <input type="text" placeholder="username" name="username"><br>
-                <label for="password">Password</label><br>
-                <input type="password" placeholder="password" name="password"><br>
-                <input type="submit" value="Login">
-            </form>
-        </div>
+        
     </div>
 </body>
 </html>
