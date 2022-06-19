@@ -9,13 +9,17 @@ app.use(cookieParser())
 
 app.use('/static', express.static('static'))
 //operations
-app.use('/o', require('./routes/operations'))
+app.use('/', require('./routes/operations'))
 //forms
 app.use('/f', require('./routes/operations'))
 //link shortener
 app.use('/s', require('./routes/operations'))
 //analystics
 app.use('/a', require('./routes/operations'))
+
+//api
+app.use('/api/users', require('./routes/users'))
+app.use('/api/auth', require('./routes/auth'))
 
 app.get('*', (req, res) => {
     res.sendStatus(404)

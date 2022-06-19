@@ -1,5 +1,5 @@
 const logout = () => {
-    window.location.href='/o/logout'
+    window.location.href='/api/auth/logout'
 }
 const ytbl = () => {
     
@@ -23,7 +23,7 @@ for(let i=0; i<taskbarbuttons.length; i++) {
         e.composedPath()[0].classList.add('taskiconselected')
     }
 }
-fetch('/o/getUser').then(data => {
+fetch('/api/users/getUser').then(data => {
     data.json().then(jsonData => {
         //determine Greet Message
         let msg=''
