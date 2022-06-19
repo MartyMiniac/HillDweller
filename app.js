@@ -13,13 +13,14 @@ app.use('/', require('./routes/operations'))
 //forms
 app.use('/f', require('./routes/operations'))
 //link shortener
-app.use('/s', require('./routes/operations'))
+app.use('/s', require('./routes/shortener-pub'))
 //analystics
 app.use('/a', require('./routes/operations'))
 
 //api
 app.use('/api/users', require('./routes/users'))
 app.use('/api/auth', require('./routes/auth'))
+app.use('/api/shortener', require('./routes/shortener'))
 
 app.get('*', (req, res) => {
     res.sendStatus(404)
