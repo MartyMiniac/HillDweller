@@ -15,7 +15,7 @@ router.post('/login', (req, res) => {
     userCon.checkLogin(req.body.username, req.body.password)
     .then(data => {
         if(data.success===true) {
-            res.cookie('jwt', data.jwt)
+            res.cookie('jwtToken', data.jwt)
             return res.redirect('/o/dashboard')
         }
         else {
@@ -28,7 +28,12 @@ router.post('/login', (req, res) => {
     })
 })
 
-router.get('/dashboard', ui.dashboardPage)
+router.get('/dashboard', auth.isAuthenticated, ui.dashboardPage)
+
+router.get('/logout', (req, res) => {
+    res.clearCookie('jwtToken')
+    res.redirect('/o/login')
+})
 
 router.post('/addUser', (req, res) => {
     if(req.body.name===undefined || req.body.username===undefined || req.body.password===undefined) {
@@ -44,6 +49,20 @@ router.post('/addUser', (req, res) => {
         console.log(err)
         return res.sendStatus(500)
     })
+})
+
+router.get('/getUser', auth.isAuthenticated, (req, res) => {
+    userCon.getUser(req.id)
+    .then(data => {
+        res.json(data)
+    })
+    // userCon.getUser(req.id).then(data => {
+    //     // res.json(data)
+    //     res.send('test')
+    // })
+    // .catch(err => {
+    //     res.status(500)
+    // })
 })
 
 router.post('/delUser', (req, res) => {
