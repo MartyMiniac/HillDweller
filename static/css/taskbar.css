@@ -1,0 +1,37 @@
+.taskbar {
+    position: fixed;
+    bottom: 0;
+    height: fit-content;
+    width: fit-content;
+
+    display: flex;
+    align-items: center;
+
+    background-color: rgba(255, 255, 255, 0.2);
+    transition-duration: 0.5s;
+    padding: 0em 0.5em;
+}
+.taskbar:hover {
+    background-color: rgba(255, 255, 255, 0.4);
+}
+.taskicon {
+    width: 4em;
+    height: 4em;
+    padding: 0em 0.5em;
+    margin: 0.5em 0.25em 0.2em 0.25em;
+    transition-duration: 0.2s;
+    background-repeat: no-repeat;
+    background-position: center;
+    cursor: pointer;
+}
+.taskicon:hover {
+    padding: 0em 1em;
+    background-color: #e29e4a;
+    transform: scale(1.25);
+}
+.taskiconselected {
+    background-color: rgba(255, 255, 255, 0.6);
+    border-width: 0px;
+    border-bottom-width: 5px;
+    border-style: solid;
+}

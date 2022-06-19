@@ -5,6 +5,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Heebo">
+    <link rel="stylesheet" href="/static/css/dashboardHome.css">
+    <link rel="stylesheet" href="/static/css/taskbar.css">
     <title>Dashboard</title>
 </head>
 <style>
@@ -33,135 +35,6 @@
         min-height: 100%;
         display: flex;
         justify-content: center;
-    }
-    .workspace {
-        width: 100%;
-        min-height: 100%;
-        margin-bottom: 4.5em;
-        display: flex;
-        flex-direction: column;
-        align-content: center;
-    }
-    .taskbar {
-        position: fixed;
-        bottom: 0;
-        height: fit-content;
-        width: fit-content;
-
-        display: flex;
-        align-items: center;
-
-        background-color: rgba(255, 255, 255, 0.2);
-        transition-duration: 0.5s;
-        padding: 0em 0.5em;
-    }
-    .taskbar:hover {
-        background-color: rgba(255, 255, 255, 0.4);
-    }
-    .taskicon {
-        width: 4em;
-        height: 4em;
-        padding: 0em 0.5em;
-        margin: 0.5em 0.25em 0.2em 0.25em;
-        transition-duration: 0.2s;
-        background-repeat: no-repeat;
-        background-position: center;
-        cursor: pointer;
-    }
-    .taskicon:hover {
-        padding: 0em 1em;
-        background-color: #e29e4a;
-        transform: scale(1.25);
-    }
-    .taskiconselected {
-        background-color: rgba(255, 255, 255, 0.6);
-        border-width: 0px;
-        border-bottom-width: 5px;
-        border-style: solid;
-    }
-    .cards {
-        animation: fadeInAnimation ease 1s;
-        animation-iteration-count: 1;
-        animation-fill-mode: forwards;
-    }
-    @keyframes fadeInAnimation {
-        0% {
-            transform: translate(0px, 2em);
-            opacity: 0;
-        }
-        100% {
-            opacity: 1;
-        }
-    }
-    .greetBox {
-        margin: 2em 2em 0em 2em;
-        width: 90%;
-        min-height: 4em;
-        height: fit-content;
-        background-color: rgba(255, 255, 255, 0.6);
-        color: black;
-        padding: 2em;
-    }
-    .greetBox h1 {
-        margin: 0;
-        font-size: 3em;
-    }
-    .activities {
-        margin: 2em;
-        width: 90%;
-        height: fit-content;
-        background-color: rgba(255, 255, 255, 0.2);
-        color: black;
-        padding: 1em;
-    }
-    .activities h2 {
-        margin: 0;
-    }
-    .actbox {
-        width: 100%;
-        height: fit-content;
-
-        display: flex;
-        flex-direction: row;
-        align-content: center;
-        justify-content: left;
-        flex-wrap: wrap;
-    }
-    .actpane {
-        background-color: rgba(255, 255, 255, 0.4);
-        min-width: 30%;
-        width: 20em;
-        height: 10em;
-        margin: 1em;
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        justify-content: left;
-        transition-duration: 0.3s;
-        cursor: pointer;
-    }
-    .actpane:hover {
-        animation: actpaneHoverAnimation ease-in 0.4s;
-        background-color: #e29e4ab0;
-    }
-    @keyframes actpaneHoverAnimation {
-        0% {
-            transform: scale(1);
-        }
-        33% {
-            transform: scale(1.05);
-        }
-        66% {
-            transform: scale(0.95);
-        }
-        100% {
-            transform: scale(1);
-        }
-    }
-    .actpaneimage {
-        height: 70%;
-        width: auto;
-        margin: 1em;
     }
 </style>
 <body>
@@ -250,48 +123,5 @@
         </div>
     </div>
 </body>
-<script>
-    const logout = () => {
-        window.location.href='/o/logout'
-    }
-    const ytbl = () => {
-        
-    }
-    const taskbarFunctions = {
-        'taskicon-home': ytbl,
-        'taskicon-shortener': ytbl,
-        'taskicon-forms': ytbl,
-        'taskicon-analytic': ytbl,
-        'taskicon-user': ytbl,
-        'taskicon-admin': ytbl,
-        'taskicon-logout': logout
-    }
-    const taskbarbuttons = document.getElementsByClassName('taskicon')
-    for(let i=0; i<taskbarbuttons.length; i++) {
-        taskbarbuttons[i].onclick = (e) => {
-            for(let j=0; j<taskbarbuttons.length; j++) {
-                taskbarbuttons[j].classList.remove('taskiconselected')
-            }
-            taskbarFunctions[e.composedPath()[0].id]()
-            e.composedPath()[0].classList.add('taskiconselected')
-        }
-    }
-    fetch('/o/getUser').then(data => {
-        data.json().then(jsonData => {
-            //determine Greet Message
-            let msg=''
-            if((new Date()).getHours()>=0 && (new Date()).getHours()<12) {
-                msg='Good Morning '
-            }
-            else if((new Date()).getHours()>=12 && (new Date()).getHours()<17) {
-                msg='Good Afternoon '
-            }
-            else {
-                msg='Good Evening '
-            }
-            msg+=jsonData.name+' !'
-            document.getElementById('greetBoxMsg').innerText=msg
-        })
-    })
-</script>
+<script defer src="/static/js/taskbar.js"></script>
 </html>
