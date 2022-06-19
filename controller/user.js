@@ -18,6 +18,20 @@ exports.addUser = (data) => {
     })
 }
 
+exports.getUser = (username) => {
+    return new Promise((resolve, refuse) => {
+        userModel.findOne({
+            username: username
+        }).then(data => {
+            data.password=undefined
+            resolve(data)
+        })
+        .catch(err => {
+            refuse(err)
+        })
+    })
+}
+
 /**
  * deletes the user data of the provided user id
  * @param {_id of the user} uid 

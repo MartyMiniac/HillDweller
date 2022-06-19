@@ -21,6 +21,6 @@ exports.isAuthenticated = (req, res, next) => {
         next()
     }
     catch {
-        return res.redirect('/login')
+        return res.redirect('/o/login')
     }
 }

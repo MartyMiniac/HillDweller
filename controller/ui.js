@@ -6,5 +6,5 @@ exports.loginPage = (req, res) => {
 }
 
 exports.dashboardPage = (req, res) => {
-    res.sendFile(`${UI_PATH}dashboard.html`)
+    res.sendFile(`${UI_PATH}dashboard-home.html`)
 } 
