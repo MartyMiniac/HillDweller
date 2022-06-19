@@ -41,12 +41,12 @@
     <div class="container">
         <div class="workspace">
             <div class="greetBox cards">
-                <h1 id="greetBoxMsg"></h1>
+                <h1 id="greetBoxMsg">Good Morning Rohan !</h1>
             </div>
             <div class="activities cards">
                 <h2>Here are a few things to get started with</h2>
                 <div class="actbox">
-                    <div class="actpane" id="shortenerBTN">
+                    <div class="actpane">
                         <img class="actpaneimage" src="/static/icons/shortener.svg">
                         <div>
                             <h3>Link Shortener</h3>
@@ -56,7 +56,7 @@
                             </p>
                         </div>
                     </div>
-                    <div class="actpane" id="formsBTN">
+                    <div class="actpane">
                         <img class="actpaneimage" src="/static/icons/forms.svg">
                         <div>
                             <h3>Forms</h3>
@@ -65,7 +65,7 @@
                             </p>
                         </div>
                     </div>
-                    <div class="actpane" id="analyticsBTN">
+                    <div class="actpane">
                         <img class="actpaneimage" src="/static/icons/analytics.svg">
                         <div>
                             <h3>Analytics</h3>
@@ -75,7 +75,7 @@
                             </p>
                         </div>
                     </div>
-                    <div class="actpane" id="userBTN">
+                    <div class="actpane">
                         <img class="actpaneimage" src="/static/icons/user.svg">
                         <div>
                             <h3>Profile</h3>
@@ -85,7 +85,7 @@
                             </p>
                         </div>
                     </div>
-                    <div class="actpane" id="adminBTN">
+                    <div class="actpane">
                         <img class="actpaneimage" src="/static/icons/admin.svg">
                         <div>
                             <h3>Admin</h3>
@@ -100,7 +100,7 @@
         </div>
         <div class="taskbar">
             <span title="Home">
-                <div class="taskicon taskiconselected" style="background-image: url('/static/icons/home.svg');" id="taskicon-home"></div>
+                <div class="taskicon" style="background-image: url('/static/icons/home.svg');" id="taskicon-home"></div>
             </span>
             <span title="Link Shortener">
                 <div class="taskicon" style="background-image: url('/static/icons/shortener.svg');" id="taskicon-shortener"></div>
@@ -115,7 +115,7 @@
                 <div class="taskicon" style="background-image: url('/static/icons/user.svg');" id="taskicon-user"></div>
             </span>
             <span title="Manage">
-                <div class="taskicon" style="background-image: url('/static/icons/admin.svg');" id="taskicon-admin"></div>
+                <div class="taskicon taskiconselected" style="background-image: url('/static/icons/admin.svg');" id="taskicon-admin"></div>
             </span>
             <span title="Logout">
                 <div class="taskicon" style="background-image: url('/static/icons/logout.svg');" id="taskicon-logout"></div>
@@ -124,5 +124,4 @@
     </div>
 </body>
 <script defer src="/static/js/taskbar.js"></script>
-<script defer src="/static/js/dashboardHomeWorkspace.js"></script>
 </html>
