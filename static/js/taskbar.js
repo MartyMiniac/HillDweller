@@ -1,16 +1,32 @@
 const logout = () => {
     window.location.href='/api/auth/logout'
 }
-const ytbl = () => {
-    
+const home = () => {
+    window.location.href='/dashboard/home'
 }
+const shortener = () => {
+    window.location.href='/dashboard/shortener'
+}
+const forms = () => {
+    window.location.href='/dashboard/forms'
+}
+const analytics = () => {
+    window.location.href='/dashboard/analytics'
+}
+const user = () => {
+    window.location.href='/dashboard/user'
+}
+const admin = () => {
+    window.location.href='/dashboard/manage'
+}
+
 const taskbarFunctions = {
-    'taskicon-home': ytbl,
-    'taskicon-shortener': ytbl,
-    'taskicon-forms': ytbl,
-    'taskicon-analytic': ytbl,
-    'taskicon-user': ytbl,
-    'taskicon-admin': ytbl,
+    'taskicon-home': home,
+    'taskicon-shortener': shortener,
+    'taskicon-forms': forms,
+    'taskicon-analytics': analytics,
+    'taskicon-user': user,
+    'taskicon-admin': admin,
     'taskicon-logout': logout
 }
 const taskbarbuttons = document.getElementsByClassName('taskicon')
@@ -23,20 +39,3 @@ for(let i=0; i<taskbarbuttons.length; i++) {
         e.composedPath()[0].classList.add('taskiconselected')
     }
 }
-fetch('/api/users/getUser').then(data => {
-    data.json().then(jsonData => {
-        //determine Greet Message
-        let msg=''
-        if((new Date()).getHours()>=0 && (new Date()).getHours()<12) {
-            msg='Good Morning '
-        }
-        else if((new Date()).getHours()>=12 && (new Date()).getHours()<17) {
-            msg='Good Afternoon '
-        }
-        else {
-            msg='Good Evening '
-        }
-        msg+=jsonData.name+' !'
-        document.getElementById('greetBoxMsg').innerText=msg
-    })
-})

@@ -115,3 +115,33 @@ exports.checkLogin = (username, password) => {
         })
     })
 }
+
+exports.checkPermission = (username, expectedUserId, permissions) => {
+    return new Promise((resolve, refuse) => {
+        userModel.findOne({
+            username: username
+        })
+        .then(usr => {
+            let k=false
+            if(permissions.includes('owner')) {
+                if(usr._id.toString()===expectedUserId.toString()) {
+                    k=true
+                }
+            }
+            if(permissions.includes('coordinator')) {
+                if(usr.role==='coordinator') {
+                    k=true
+                }
+            }
+            if(permissions.includes('core')) {
+                if(usr.role==='coordinator') {
+                    k=true
+                }
+            }
+            resolve(k)
+        })
+        .catch(err => {
+            refuse(err)
+        })
+    })
+}
