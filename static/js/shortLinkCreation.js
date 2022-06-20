@@ -112,7 +112,6 @@ document.getElementById('createLinkBtn').onclick = async () => {
     else {
         createShortenedLink(document.getElementById('fullLink').value, document.getElementById('shortLink').value)
         .then(data => {
-            console.log(data)
             spinner.classList.remove("fa-circle-o-notch")
             spinner.classList.remove("fa-spin")
             LinkCreationSuccess()
